@@ -34,7 +34,7 @@
 | 深度学习 | [13.迁移学习(Transfer)](./Deep%20Learning/13.%20Transfer%20Learning) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | 深度学习 | [14.强化学习(Reinforcement) & 多任务](./Deep%20Learning/14.%20Reinforcement%20Learning) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | 深度学习 | [15. 深度学习的优化方法](./Deep%20Learning/15.%20DL%20Optimizer) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
-| NLP      | [16. 自然语言处理(NLP)](./NLP/16.%20NLP) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
+| NLP      | [16. 自然语言处理(NLP)](./NLP/16.%20NLP) | | |
 | NLP      | [16.1 词嵌入(Word2Vec)](./NLP/16.1%20Word%20Embedding) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | NLP      | [16.2 子词嵌入(fastText)](./NLP/16.2%20fastText) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | NLP      | [16.3 全局向量词嵌入(GloVe)](./NLP/16.3%20GloVe) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
@@ -48,3 +48,8 @@
 | 项目     | [18. 智能客服(Intelligent Customer Service)](./Project/18.%20Intelligent%20Customer%20Service) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | 项目     | 19. 知识图谱(Knowledge Graph)                                |                                         |           |
 | 项目     | 20. 评论分析                                                 |                                         |           |
+
+## 链接
+
+1. [原作者](https://github.com/NLP-LOVE)
+2. [Edge Markdown Viewer](https://microsoftedge.microsoft.com/addons/detail/markdown-viewer/cgfmehpekedojlmjepoimbfcafopimdg)
