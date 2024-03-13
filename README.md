@@ -35,7 +35,7 @@
 | 深度学习 | [14.强化学习(Reinforcement) & 多任务](./Deep%20Learning/14.%20Reinforcement%20Learning) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | 深度学习 | [15. 深度学习的优化方法](./Deep%20Learning/15.%20DL%20Optimizer) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | NLP      | [16. 自然语言处理(NLP)](./NLP/16.%20NLP) | | |
-| NLP      | [16.1 词嵌入(Word2Vec)](./NLP/16.1%20Word%20Embedding) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
+| NLP      | [16.1 词嵌入(Word2Vec)](./NLP/16.1%20Word%20Embedding) | | |
 | NLP      | [16.2 子词嵌入(fastText)](./NLP/16.2%20fastText) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | NLP      | [16.3 全局向量词嵌入(GloVe)](./NLP/16.3%20GloVe) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | NLP      | [16.4 textRNN & textCNN](./NLP/16.4%20textRNN%20%26%20textCNN) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
