@@ -39,7 +39,7 @@
 | NLP      | [16.2 子词嵌入(fastText)](./NLP/16.2%20fastText) | | |
 | NLP      | [16.3 全局向量词嵌入(GloVe)](./NLP/16.3%20GloVe) | | |
 | NLP      | [16.4 textRNN & textCNN](./NLP/16.4%20textRNN%20%26%20textCNN) | | |
-| NLP      | [16.5 序列到序列模型(seq2seq)](./NLP/16.5%20seq2seq) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
+| NLP      | [16.5 序列到序列模型(seq2seq)](./NLP/16.5%20seq2seq) | | |
 | NLP      | [16.6 注意力机制(Attention Mechanism)](./NLP/16.6%20Attention) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | NLP      | [16.7 Transformer模型](./NLP/16.7%20Transformer) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | NLP      | [16.8 BERT模型](./NLP/16.8%20BERT) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
@@ -53,3 +53,4 @@
 
 1. [原作者](https://github.com/NLP-LOVE)
 2. [Edge Markdown Viewer](https://microsoftedge.microsoft.com/addons/detail/markdown-viewer/cgfmehpekedojlmjepoimbfcafopimdg)
+3. [VSCode Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
