@@ -40,14 +40,12 @@
 | NLP      | [16.3 全局向量词嵌入(GloVe)](./NLP/16.3%20GloVe) | | |
 | NLP      | [16.4 textRNN & textCNN](./NLP/16.4%20textRNN%20%26%20textCNN) | | |
 | NLP      | [16.5 序列到序列模型(seq2seq)](./NLP/16.5%20seq2seq) | | |
-| NLP      | [16.6 注意力机制(Attention Mechanism)](./NLP/16.6%20Attention) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
+| NLP      | [16.6 注意力机制(Attention Mechanism)](./NLP/16.6%20Attention) | | |
 | NLP      | [16.7 Transformer模型](./NLP/16.7%20Transformer) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | NLP      | [16.8 BERT模型](./NLP/16.8%20BERT) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | NLP      | [16.9 XLNet模型](./NLP/16.9%20XLNet) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | 项目     | [17. 推荐系统(Recommendation System)](./Project/17.%20Recommendation%20System) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | 项目     | [18. 智能客服(Intelligent Customer Service)](./Project/18.%20Intelligent%20Customer%20Service) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
-| 项目     | 19. 知识图谱(Knowledge Graph)                                |                                         |           |
-| 项目     | 20. 评论分析                                                 |                                         |           |
 
 ## 链接
 
