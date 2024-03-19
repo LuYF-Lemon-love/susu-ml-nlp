@@ -43,7 +43,7 @@
 | NLP      | [16.6 注意力机制(Attention Mechanism)](./NLP/16.6%20Attention) | | |
 | NLP      | [16.7 Transformer模型](./NLP/16.7%20Transformer) | | |
 | NLP      | [16.8 BERT模型](./NLP/16.8%20BERT) | | |
-| NLP      | [16.9 XLNet模型](./NLP/16.9%20XLNet) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
+| NLP      | [16.9 XLNet模型](./NLP/16.9%20XLNet) | | |
 | 项目     | [17. 推荐系统(Recommendation System)](./Project/17.%20Recommendation%20System) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | 项目     | [18. 智能客服(Intelligent Customer Service)](./Project/18.%20Intelligent%20Customer%20Service) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 
