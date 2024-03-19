@@ -1,4 +1,4 @@
 #!/bin/bash
 git add .
-git commit -m "修改 16.9 XLNet模型"
+git commit -m "修改 10.神经网络(Neural Network"
 git push

@@ -26,7 +26,7 @@
 | 机器学习 | [7.聚类(Clustering)](./Machine%20Learning/7.%20Clustering) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | 机器学习 | [8.ML特征工程和优化方法](./Machine%20Learning/8.%20ML%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E5%92%8C%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | 机器学习 | [9.K近邻算法(KNN)](./Machine%20Learning/9.%20KNN) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
-| 深度学习 | [10.神经网络(Neural Network)](./Deep%20Learning/10.%20Neural%20Network) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
+| 深度学习 | [10.神经网络(Neural Network)](./Deep%20Learning/10.%20Neural%20Network) | | |
 | 深度学习 | [11. 卷积神经网络(CNN)](./Deep%20Learning/11.%20CNN) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | 深度学习 | [12. 循环神经网络(RNN)](./Deep%20Learning/12.%20RNN) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | 深度学习 | [12.1 门控循环单元(GRU)](./Deep%20Learning/12.1%20GRU) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
