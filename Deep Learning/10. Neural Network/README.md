@@ -131,19 +131,13 @@ $$
 
 1. **sigmoid函数**
 
-   ![image](https://ws2.sinaimg.cn/large/00630Defly1g2x34jlnrrj306g0590st.jpg)
+   $$a=g(z)=\frac{1}{1+e^{-z}}$$
 
-   ![](https://latex.codecogs.com/gif.latex?a=g(z)=\frac{1}{1+e^{-z}})
-
-   ![](https://latex.codecogs.com/gif.latex?g(z)^{'}=\frac{d}{dz}g(z)=\alpha(1-\alpha))
+   $$g(z)^{'}=\frac{d}{dz}g(z)=\alpha(1-\alpha)$$
 
 2. **tanh(双曲正切)函数**
 
    事实上，**tanh** 函数是 **sigmoid** 的向下平移和伸缩后的结果。对它进行了变形后，穿过了(0,0)点，并且值域介于+1 和-1 之间。但有一个例外：在二分类的问题中，对于输出层，因为𝑦的值是 0 或 1，所以想让𝑦^的数值介于0和1之间，而不是在-1和+1之间。所以需要使用**sigmoid**激活函数。
-
-   ![image](https://ws3.sinaimg.cn/large/00630Defly1g2x355gdkij306k04q0sr.jpg)
-
-   ![](http://wx1.sinaimg.cn/mw690/00630Defgy1g5nm3dsq7aj30ad02zq2y.jpg)
 
    **sigmoid**函数和**tanh**函数两者共同的缺点是，在𝑧特别大或者特别小的情况下，导数的梯度或者函数的斜率会变得特别小，最后就会接近于 0，导致降低梯度下降的速度。
 
@@ -151,19 +145,18 @@ $$
 
    只要𝑧是正值的情况下，导数恒等于 1，当𝑧是负 值的时候，导数恒等于 0。
 
-   ![image](https://wx4.sinaimg.cn/large/00630Defly1g2x3f01a0gj306d04xmx7.jpg)
-
-   ![](https://latex.codecogs.com/gif.latex?a=max(0,z))
-
-   ![](http://wx3.sinaimg.cn/mw690/00630Defgy1g5nm5d67dbj30ar03h3yi.jpg)
+   $$a=max(0,z)$$
    
    这有一些选择激活函数的经验法则： 如果输出是 0、1 值（二分类问题），则输出层选择 **sigmoid** 函数，然后其它的所有单 元都选择 **Relu** 函数。 
    
 4. **softmax激活函数**
 
-   - 非线性变换之前计算：![](https://latex.codecogs.com/gif.latex?z^{(l)}=W^{(l)}a^{(l-1)}+b^{(l)})
-   - 经过非线性变换，临时变量：![](https://latex.codecogs.com/gif.latex?t=e^{z^{(l)}})
-   - ![](https://latex.codecogs.com/gif.latex?a^{l}=\frac{t_i}{\sum_{j=1}^{n}t_i})归一化
+   - 非线性变换之前计算：
+     - $$z^{(l)}=W^{(l)}a^{(l-1)}+b^{(l)}$$
+   - 经过非线性变换，临时变量：
+     - $$t=e^{z^{(l)}}$$
+   - 归一化
+     - $$a^{l}=\frac{t_i}{\sum_{j=1}^{n}t_i}$$
    - $a^l$表示的就是第几个类别的概率值，这些**概率值和为1**
 
    之前，我们的激活函数都是接受单行数值输入，例如 **Sigmoid** 和 **ReLu** 激活函数，输入一个实数，输出一个实数。**Softmax** 激活函数的特殊之处在于，因为需要将所有可能的输出归一化，就需要输入一个向量，最后输出一个向量。
@@ -191,31 +184,31 @@ $$
 
 #### 3.3.5 激活函数有哪些性质？
 
-1. 非线性： 当激活函数是线性的，一个两层的神经网络就可以基本上逼近所有的函数。但如果激活函数是恒等激活函数的时候，即 ![](https://latex.codecogs.com/gif.latex?f(x)=x)，就不满足这个性质，而且如果 MLP 使用的是恒等激活函数，那么其实整个网络跟单层神经网络是等价的；
+1. 非线性： 当激活函数是非线性的，一个两层的神经网络就可以基本上逼近所有的函数。但如果激活函数是恒等激活函数的时候，即 $f(x)=x$，就不满足这个性质，而且如果 MLP 使用的是恒等激活函数，那么其实整个网络跟单层神经网络是等价的；
 2. 可微性： 当优化方法是基于梯度的时候，就体现了该性质；
 3. 单调性： 当激活函数是单调的时候，单层网络能够保证是凸函数；
-4. ![](http://wx1.sinaimg.cn/mw690/00630Defgy1g5nmaak1f3j302x0120si.jpg)： 当激活函数满足这个性质的时候，如果参数的初始化是随机的较小值，那么神经网络的训练将会很高效；如果不满足这个性质，那么就需要详细地去设置初始值；
+4. ![](./images/00630Defgy1g5nmaak1f3j302x0120si.jpg)： 当激活函数满足这个性质的时候，如果参数的初始化是随机的较小值，那么神经网络的训练将会很高效；如果不满足这个性质，那么就需要详细地去设置初始值；
 5. 输出值的范围： 当激活函数输出值是有限的时候，基于梯度的优化方法会更加稳定，因为特征的表示受有限权值的影响更显著；当激活函数的输出是无限的时候，模型的训练会更加高效，不过在这种情况小，一般需要更小的 Learning Rate。
 
 ### 3.4 正向传播
 
 正向传播(forward-propagation)是指对神经网络沿着从输入层到输出层的顺序，依次计算并存储模型的中间变量(包括输出)。
 
-逻辑回归的计算步骤：所以回想当时我们讨论逻辑回归的时候，我们有这个正向传播步骤，其中我们计算𝑧，然后𝑎，然后损失函数𝐿。 正向传播类似，计算![](https://latex.codecogs.com/gif.latex?z^{[1]}，a^{[1]})，再计算![](https://latex.codecogs.com/gif.latex?z^{[2]}，a^{[2]})，最后得到**loss function**。
+逻辑回归的计算步骤：所以回想当时我们讨论逻辑回归的时候，我们有这个正向传播步骤，其中我们计算𝑧，然后𝑎，然后损失函数𝐿。 正向传播类似，计算$z^{[1]}，a^{[1]}$，再计算$z^{[2]}，a^{[2]}$，最后得到**loss function**。
 
-![](http://wx3.sinaimg.cn/mw690/00630Defgy1g5nmdcfqwjj30dp039t8n.jpg)
+![](./images/00630Defgy1g5nmdcfqwjj30dp039t8n.jpg)
 
 ### 3.5 反向传播(BP)
 
 反向传播(back-propagation)指的是计算神经网络参数梯度的方法。总的来说，反向传播依据微积分中的链式法则，沿着从输出层到输入层的顺序，依次计算并存储目标函数有关神经网络各层的中间变量以及参数的梯度。
 
-由正向传播经过所有的隐藏层到达输出层，会得到一个输出结果![](https://latex.codecogs.com/gif.latex?O_L)，然后根据这个![](https://latex.codecogs.com/gif.latex?O_L)带入**loss funcation**中，利用SGD算法进行最优化求解，其中每次梯度下降都会使用一次BP来更新各个网络层中的参数值，这就是BP回传误差的意思。
+由正向传播经过所有的隐藏层到达输出层，会得到一个输出结果$O_L)$，然后根据这个$O_L$带入**loss funcation**中，利用SGD算法进行最优化求解，其中每次梯度下降都会使用一次BP来更新各个网络层中的参数值，这就是BP回传误差的意思。
 
-![image](http://wx4.sinaimg.cn/mw690/00630Defgy1g5hmv1p3elj30nw0adacj.jpg)
+![](./images/00630Defgy1g5hmv1p3elj30nw0adacj.jpg)
 
 - 正向传播求损失，BP回传误差。
 - 根据误差信号修正每层的权重。对各个w进行求导，然后更新各个w。
-- **链式依赖损失函数**：![](https://latex.codecogs.com/gif.latex?y^{-}=h(g(f(x))))
+- **链式依赖损失函数**：$y^{-}=h(g(f(x)))$
 
 ### 3.6 随机梯度下降法(SGD)
 
@@ -277,29 +270,27 @@ $$
 
 目前从招聘来说，公司使用TensorFlow的占大多数，毕竟TensorFlow的社区、性能、部署方面都是很强的，所以之后写的实例代码都使用TensorFlow来完成。
 
-
-
 ## 6. softmax分类器
 
 ### 6.1 什么是softmax
 
 在图像分类的情景中，softmax分类器输出可以是一个图像类别的离散值，和线性回归不同的是，**softmax输出单元从一个变成了多个。**
 
-softmax回归和线性回归一样将输入特征与权重做线性叠加。与线性回归的一个主要不同在于，**softmax回归的输出值个数等于标签里的类别数。**下图是用神经网络描绘了softmax回归，也是一个单层神经网络，由于每个输出  ![](https://latex.codecogs.com/gif.latex?o_1,o_2,o_3)的计算都要依赖于所有的输入 ![](https://latex.codecogs.com/gif.latex?x_1,x_2,x_3,x_4)，softmax回归的输出层也是一个全连接层。
+softmax回归和线性回归一样将输入特征与权重做线性叠加。与线性回归的一个主要不同在于，**softmax回归的输出值个数等于标签里的类别数。** 下图是用神经网络描绘了softmax回归，也是一个单层神经网络，由于每个输出  $o_1,o_2,o_3$ 的计算都要依赖于所有的输入 $x_1,x_2,x_3,x_4$，softmax回归的输出层也是一个全连接层。
 
-![](http://wx4.sinaimg.cn/mw690/00630Defly1g5lpopm1c3j30h906574z.jpg)
+![](./images/00630Defly1g5lpopm1c3j30h906574z.jpg)
 
-![](https://latex.codecogs.com/gif.latex?o_1=x_1w_{11}+x_2w_{21}+x_3w_{31}+x_4w_{41})
+$$o_1=x_1w_{11}+x_2w_{21}+x_3w_{31}+x_4w_{41}$$
 
-![](https://latex.codecogs.com/gif.latex?o_2=x_1w_{12}+x_2w_{22}+x_3w_{32}+x_4w_{42})
+$$o_2=x_1w_{12}+x_2w_{22}+x_3w_{32}+x_4w_{42}$$
 
-![](https://latex.codecogs.com/gif.latex?o_3=x_1w_{13}+x_2w_{23}+x_3w_{33}+x_4w_{43})
+$$o_3=x_1w_{13}+x_2w_{23}+x_3w_{33}+x_4w_{43}$$
 
-![](https://latex.codecogs.com/gif.latex?o_4=x_1w_{14}+x_2w_{24}+x_3w_{34}+x_4w_{44})
+$$o_4=x_1w_{14}+x_2w_{24}+x_3w_{34}+x_4w_{44}$$
 
 ### 6.2 softmax的计算
 
-一个简单的办法是将输出值  ![](https://latex.codecogs.com/gif.latex?o_i)当做预测类别是i的置信度，并将值最大的输出所对应的类别作为预测输出。例如，如果  ![](https://latex.codecogs.com/gif.latex?o_1,o_2,o_3)分别为0.1 ; 10 ; 0.1，由于 ![](https://latex.codecogs.com/gif.latex?o_2)最大，那么预测类别为2。
+一个简单的办法是将输出值  $o_i$ 当做预测类别是i的置信度，并将值最大的输出所对应的类别作为预测输出。例如，如果  $o_1,o_2,o_3$ 分别为0.1 ; 10 ; 0.1，由于 $o_2$ 最大，那么预测类别为2。
 
 然而，直接使用输出层的输出会有两个问题：
 
@@ -308,28 +299,20 @@ softmax回归和线性回归一样将输入特征与权重做线性叠加。与�
 
 softmax运算解决了以上两个问题。它通过下面的公式将输出值变换成值为正且和为1的概率分布：
 
-![](https://latex.codecogs.com/gif.latex?softmax(o_i)=\frac{exp(o_i)}{\sum_{i=1}^{n}exp(o_i)})
+$$softmax(o_i)=\frac{exp(o_i)}{\sum_{i=1}^{n}exp(o_i)}$$
 
 ### 6.3 交叉熵损失函数
 
 我们已经知道，softmax运算将输出变换成一个合法的类别预测分布。实际上，真实标签也可以用类别分布表达：
 
-对于样本i，我们构造向量 ![](https://latex.codecogs.com/gif.latex?y^{(i)}\in_{}R^q)，使其第  ![](https://latex.codecogs.com/gif.latex?y^{(i)})个元素为1，其余为0。这样我们的训练目标可以设为使预测概率分布 ![](https://latex.codecogs.com/gif.latex?\hat{y}^{(i)})尽可能接近真实的标签概率 ![](https://latex.codecogs.com/gif.latex?y^{(i)})。
+对于样本i，我们构造向量 $y^{(i)}\in R^q$ ，使其第  $y^{(i)}$ 个元素为1，其余为0。这样我们的训练目标可以设为使预测概率分布 $\hat{y}^{(i)}$ 尽可能接近真实的标签概率 $y^{(i)}$ 。
 
 想要预测分类结果正确，**我们其实并不需要预测概率完全等于标签概率**，而平方损失则过于严格。改善这个问题的一个方法是使用更适合衡量两个概率分布差异的测量函数。其中，**交叉熵(cross entropy)是一个常用的衡量方法：**
 
-![](http://wx3.sinaimg.cn/mw690/00630Defgy1g5nmm3jzapj30e201o749.jpg)
+![](./images/00630Defgy1g5nmm3jzapj30e201o749.jpg)
 
-其中带下标的 ![](https://latex.codecogs.com/gif.latex?y_j^{(i)})是向量 ![](https://latex.codecogs.com/gif.latex?y^{(i)})中非 0 即 1 的元素。也就是说，**交叉熵只关心对正确类别的预测概率**，因为只要其值足够大，就可以确保分类结果正确。**即最小化交叉熵损失函数等价于最大化训练数据集所有标签类别的联合预测概率。**
+其中带下标的 $y_j^{(i)}$ 是向量 $y^{(i)}$ 中非 0 即 1 的元素。也就是说，**交叉熵只关心对正确类别的预测概率**，因为只要其值足够大，就可以确保分类结果正确。**即最小化交叉熵损失函数等价于最大化训练数据集所有标签类别的联合预测概率。**
 
 ## 7. 神经网络实现
 
-[TensorFlow示例：线性回归](https://github.com/NLP-LOVE/ML-NLP/blob/master/Deep%20Learning/10.%20Neural%20Network/TensorFlow_LR.ipynb)
-
-------
-
-> 作者：[@mantchs](https://github.com/NLP-LOVE/ML-NLP)
->
-> GitHub：[https://github.com/NLP-LOVE/ML-NLP](https://github.com/NLP-LOVE/ML-NLP)
->
-> 欢迎大家加入讨论！共同完善此项目！群号：【541954936】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=863f915b9178560bd32ca07cd090a7d9e6f5f90fcff5667489697b1621cecdb3"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="NLP面试学习群" title="NLP面试学习群"></a>
+[TensorFlow示例：线性回归](./TensorFlow_LR.ipynb)
