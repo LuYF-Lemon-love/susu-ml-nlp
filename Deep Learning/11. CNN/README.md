@@ -1,4 +1,5 @@
 ## 目录
+- [目录](#目录)
 - [1. 什么是CNN](#1-什么是cnn)
   - [1.1 输入层](#11-输入层)
   - [1.2 卷积计算层(conv)](#12-卷积计算层conv)
@@ -10,9 +11,18 @@
 - [2. 典型CNN发展历程](#2-典型cnn发展历程)
 - [3. 图像相关任务](#3-图像相关任务)
   - [3.1 图像识别与定位](#31-图像识别与定位)
+    - [3.1.1 思路1：识别+定位过程](#311-思路1识别定位过程)
+    - [3.1.2 思路2：图窗+识别](#312-思路2图窗识别)
   - [3.2 物体检测(object detection)](#32-物体检测object-detection)
+    - [3.2.1 过程](#321-过程)
+    - [3.2.2 R-CNN](#322-r-cnn)
+    - [3.2.3 SPP-Net](#323-spp-net)
+    - [3.2.4 Fast R-CNN](#324-fast-r-cnn)
+    - [3.2.5 Faster R-CNN](#325-faster-r-cnn)
+    - [3.2.6 YOLO](#326-yolo)
+    - [3.2.7 SSD](#327-ssd)
   - [3.3 语义(图像)分割](#33-语义图像分割)
-- [4. 代码实现CNN](https://github.com/NLP-LOVE/ML-NLP/blob/master/Deep%20Learning/11.%20CNN/CNN.ipynb)
+- [4. 代码实现CNN](#4-代码实现cnn)
 - [5. 参考文献](#5-参考文献)
 
 ## 1. 什么是CNN
@@ -21,7 +31,7 @@
 
 我们先来看卷积神经网络各个层级结构图：
 
-![](http://wx2.sinaimg.cn/mw690/00630Defgy1g5pqv7pv9uj30yv0gpn1e.jpg)
+![](./images/00630Defgy1g5pqv7pv9uj30yv0gpn1e.jpg)
 
 上图中CNN要做的事情是：给定一张图片，是车还是马未知，是什么车也未知，现在需要模型判断这张图片里具体是一个什么东西，总之输出一个结果：如果是车 那是什么车。
 
@@ -44,7 +54,7 @@
    - **AlexNet**：训练集中100万张图片，对每个像素点求均值，得到均值图像，当训练时用原图减去均值图像。
    - **VGG**：对所有输入在三个颜色通道R/G/B上取均值，只会得到3个值，当训练时减去对应的颜色通道均值。(**此种方法效率高**)
 
-   **TIPS:**在训练集和测试集上减去训练集的均值。
+   **TIPS:** 在验证集和测试集上减去训练集的均值。
 
 2. 归一化
 
@@ -59,13 +69,9 @@
 
 对图像（不同的数据窗口数据）和滤波矩阵（一组固定的权重：因为每个神经元的多个权重固定，所以又可以看做一个恒定的滤波器filter）做**内积**（逐个元素相乘再求和）的操作就是所谓的『卷积』操作，也是卷积神经网络的名字来源。
 
-滤波器filter是什么呢！请看下图。图中左边部分是原始输入数据，图中中间部分是滤波器filter，图中右边是输出的新的二维数据。
+不同的滤波器filter会得到不同的输出数据，比如颜色深浅、轮廓。**相当于提取图像的不同特征，模型就能够学习到多种特征。** 用不同的滤波器filter，提取想要的关于图像的特定信息：颜色深浅或轮廓。如下图所示。
 
-![image](https://ws3.sinaimg.cn/large/00630Defgy1g2djuqln1xj30i80dy104.jpg)
-
-不同的滤波器filter会得到不同的输出数据，比如颜色深浅、轮廓。**相当于提取图像的不同特征，模型就能够学习到多种特征。**用不同的滤波器filter，提取想要的关于图像的特定信息：颜色深浅或轮廓。如下图所示。
-
-![](http://wx3.sinaimg.cn/mw690/00630Defgy1g5r30db3jpj30hv0b1wq3.jpg)
+![](./images/00630Defgy1g5r30db3jpj30hv0b1wq3.jpg)
 
 在CNN中，滤波器filter（带着一组固定权重的神经元）对局部输入数据进行卷积计算。每计算完一个数据窗口内的局部数据后，数据窗口不断平移滑动，直到计算完所有数据。这个过程中，有这么几个参数： 
 
@@ -73,9 +79,9 @@
 - 步长stride：决定滑动多少步可以到边缘。
 - 填充值zero-padding：在外围边缘补充若干圈0，方便从初始位置以步长为单位可以刚好滑倒末尾位置，通俗地讲就是为了总长能被步长整除。 
 
-![](http://wx3.sinaimg.cn/mw690/00630Defgy1g5r34yi6p4j308g05baaj.jpg)
+![](./images/00630Defgy1g5r34yi6p4j308g05baaj.jpg)
 
-![](https://mlnotebook.github.io/img/CNN/convSobel.gif)
+![](./images/convSobel.gif)
 
 - **参数共享机制**
 
@@ -93,7 +99,7 @@
 
 激活函数有：
 
-![UTOOLS1556084241657.png](https://i.loli.net/2019/04/24/5cbff6153eef3.png)
+![](./images/5cbff6153eef3.png)
 
 - sigmoid：在两端斜率接近于0，梯度消失。
 - ReLu：修正线性单元，有可能出现斜率为0，但概率很小，因为mini-batch是一批样本损失求导之和。
@@ -115,8 +121,6 @@
 - 具有特征不变性。
 
 方式有：**Max pooling、average pooling**
-
-![image](https://ws1.sinaimg.cn/large/00630Defgy1g2doejs89ej30ez0dhdj1.jpg)
 
 **Max pooling**
 
@@ -174,25 +178,21 @@
 
 ## 3. 图像相关任务
 
-![image](https://ws1.sinaimg.cn/large/00630Defly1g2lmm3f2e5j30wj0clwtx.jpg)
-
 ### 3.1 图像识别与定位
 
-1. **classification：**C个类别识别
+1. **classification：** C个类别识别
 
    - **input**：Image
    - **Output**：类别标签
    - **Evaluation metric**：准确率
 
-2. **Localization定位)**
+2. **Localization:** 定位
 
    - **Input**：Image
 
    - **Output**：物体边界框(x,y,w,h)
 
    - **Evaluation metric**：交并准则(IOU) > 0.5   图中阴影部分所占面积
-
-     ![image](https://ws1.sinaimg.cn/large/00630Defly1g2lmuahlsoj30df08rweb.jpg)
 
 #### 3.1.1 思路1：识别+定位过程
 
@@ -204,11 +204,11 @@
 
    更细致的识别可以提前规定好有k个组成部分，做成k个部分的回归，
 
-   **例如：**框出两只眼睛和两条腿，4元祖*4=16(个连续值)
+   **例如：** 框出两只眼睛和两条腿，4元祖*4=16(个连续值)
 
 3. Regression部分用欧氏距离损失，使用SGD训练。
 
-![image](https://julyedu-img-public.oss-cn-beijing.aliyuncs.com/Public/Image/Question/1517393046_527.png)
+![](./images/1517393046_527.png)
 
 #### 3.1.2 思路2：图窗+识别
 
