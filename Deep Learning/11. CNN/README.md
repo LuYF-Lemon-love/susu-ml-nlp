@@ -21,7 +21,6 @@
     - [3.2.5 Faster R-CNN](#325-faster-r-cnn)
     - [3.2.6 YOLO](#326-yolo)
     - [3.2.7 SSD](#327-ssd)
-  - [3.3 语义(图像)分割](#33-语义图像分割)
 - [4. 代码实现CNN](#4-代码实现cnn)
 - [5. 参考文献](#5-参考文献)
 
@@ -218,7 +217,7 @@
 - 判定得分
 - 按照得分的高低对“结果框”做抽样和合并
 
-![](http://wx1.sinaimg.cn/mw690/00630Defgy1g5r50m0d5wj30ow0e1dpg.jpg)
+![](./images/00630Defgy1g5r50m0d5wj30ow0e1dpg.jpg)
 
 ### 3.2 物体检测(object detection)
 
@@ -228,7 +227,7 @@
 
 那任务就变成了：多物体识别+定位多个物体，那把这个任务看做分类问题？
 
-![image](https://wx4.sinaimg.cn/large/00630Defly1g2lnprfz23j30fp0gytix.jpg)
+![](./images/00630Defly1g2lnprfz23j30fp0gytix.jpg)
 
 看成分类问题有何不妥？
 
@@ -236,13 +235,13 @@
 - 你还需要对框内的图像分类
 - 当然， 如果你的GPU很强大， 恩， 那加油做吧…
 
-**边缘策略：**想办法先找到可能包含内容的图框(**候选框**)，然后进行分类问题的识别。
+**边缘策略：** 想办法先找到可能包含内容的图框(**候选框**)，然后进行分类问题的识别。
 
 **方法**：根据RGB值做区域融合。**fast-CNN**，共享图窗，从而加速候选框的形成。
 
 - **R-CNN => fast-CNN => faster-RCNN** 速度对比
 
-  ![image](https://wx3.sinaimg.cn/large/00630Defly1g2lnwlqz87j30rk090418)
+  ![](./images/00630Defly1g2lnwlqz87j30rk090418.jpg)
 
 #### 3.2.2 R-CNN
 
@@ -259,7 +258,7 @@ SPP：Spatial Pyramid Pooling（空间金字塔池化），SPP-Net是出自2015�
 
 众所周知，CNN一般都含有卷积部分和全连接部分，其中，卷积层不需要固定尺寸的图像，而全连接层是需要固定大小的输入。所以当全连接层面对各种尺寸的输入数据时，就需要对输入数据进行crop（crop就是从一个大图扣出网络输入大小的patch，比如227×227），或warp（把一个边界框bounding box(红框)的内容resize成227×227）等一系列操作以统一图片的尺寸大小，比如224*224（ImageNet）、32*32(LenNet)、96*96等。
 
-![](https://julyedu-img-public.oss-cn-beijing.aliyuncs.com/Public/Image/Question/1525249316_603.png)
+![](./images/1525249316_603.png)
 
 所以才如你在上文中看到的，在R-CNN中，“因为取出的区域大小各自不同，所以需要将每个Region Proposal缩放（warp）成统一的227x227的大小并输入到CNN”。
 
@@ -293,9 +292,9 @@ SPP Net真是个好方法，R-CNN的进阶版Fast R-CNN就是在R-CNN的基础�
 
 R-CNN有一些相当大的缺点（把这些缺点都改掉了，就成了Fast R-CNN）。
 
-**大缺点：**由于每一个候选框都要独自经过CNN，这使得花费的时间非常多。
+**大缺点：** 由于每一个候选框都要独自经过CNN，这使得花费的时间非常多。
 
-**解决：**共享卷积层，现在不是每一个候选框都当做输入进入CNN了，而是输入一张完整的图片，在第五个卷积层再得到每个候选框的特征。
+**解决：** 共享卷积层，现在不是每一个候选框都当做输入进入CNN了，而是输入一张完整的图片，在第五个卷积层再得到每个候选框的特征。
 
 原来的方法：许多候选框（比如两千个）-->CNN-->得到每个候选框的特征-->分类+回归
 
@@ -332,13 +331,13 @@ Faster R-CNN的方法目前是主流的目标检测方法，但是速度上并�
 
 我们直接看上面YOLO的目标检测的流程图：
 
-![](https://julyedu-img-public.oss-cn-beijing.aliyuncs.com/Public/Image/Question/1525171091_647.jpg)
+![](./images/1525171091_647.jpg)
 
 1. 给个一个输入图像，首先将图像划分成7\*7的网格。
 2. 对于每个网格，我们都预测2个边框（包括每个边框是目标的置信度以及每个边框区域在多个类别上的概率）。
 3. 根据上一步可以预测出7*7*2个目标窗口，然后根据阈值去除可能性比较低的目标窗口，最后NMS去除冗余窗口即可。
 
-**小结：**YOLO将目标检测任务转换成一个回归问题，大大加快了检测的速度，使得YOLO可以每秒处理45张图像。而且由于每个网络预测目标窗口时使用的是全图信息，使得false positive比例大幅降低（充分的上下文信息）。
+**小结：** YOLO将目标检测任务转换成一个回归问题，大大加快了检测的速度，使得YOLO可以每秒处理45张图像。而且由于每个网络预测目标窗口时使用的是全图信息，使得false positive比例大幅降低（充分的上下文信息）。
 
 但是YOLO也存在问题：没有了Region Proposal机制，只使用7*7的网格回归会使得目标不能非常精准的定位，这也导致了YOLO的检测精度并不是很高。
 
@@ -346,7 +345,7 @@ Faster R-CNN的方法目前是主流的目标检测方法，但是速度上并�
 
 SSD: Single Shot MultiBox Detector。上面分析了YOLO存在的问题，使用整图特征在7*7的粗糙网格内回归对目标的定位并不是很精准。那是不是可以结合region proposal的思想实现精准一些的定位？SSD结合YOLO的回归思想以及Faster R-CNN的anchor机制做到了这点。
 
-![](https://julyedu-img-public.oss-cn-beijing.aliyuncs.com/Public/Image/Question/1525171268_230.jpg)
+![](./images/1525171268_230.jpg)
 
 上图是SSD的一个框架图，首先SSD获取目标位置和类别的方法跟YOLO一样，都是使用回归，但是YOLO预测某个位置使用的是全图的特征，SSD预测某个位置使用的是这个位置周围的特征（感觉更合理一些）。
 
@@ -356,12 +355,6 @@ SSD: Single Shot MultiBox Detector。上面分析了YOLO存在的问题，使用
 
 小结：SSD结合了YOLO中的回归思想和Faster R-CNN中的anchor机制，使用全图各个位置的多尺度区域特征进行回归，既保持了YOLO速度快的特性，也保证了窗口预测的跟Faster R-CNN一样比较精准。SSD在VOC2007上mAP可以达到72.1%，速度在GPU上达到58帧每秒。
 
-### 3.3 语义(图像)分割
-
-识别图上pixel的类别，用全卷积网络。
-
-![image](https://ws3.sinaimg.cn/large/00630Defly1g2lo1v1001j30nq0j4wu9.jpg)
-
 ## 4. 代码实现CNN
 
 [cifar10数据集分类--CNN](https://github.com/NLP-LOVE/ML-NLP/blob/master/Deep%20Learning/11.%20CNN/CNN.ipynb)
@@ -370,13 +363,3 @@ SSD: Single Shot MultiBox Detector。上面分析了YOLO存在的问题，使用
 
 1. [基于深度学习的目标检测技术演进：R-CNN、Fast R-CNN、Faster R-CNN、YOLO、SSD](https://www.julyedu.com/question/big/kp_id/32/ques_id/2103)
 2. [通俗理解卷积神经网络](https://blog.csdn.net/v_july_v/article/details/51812459)
-
-------
-
-> 作者：[@mantchs](https://github.com/NLP-LOVE/ML-NLP)
->
-> GitHub：[https://github.com/NLP-LOVE/ML-NLP](https://github.com/NLP-LOVE/ML-NLP)
->
-> 欢迎大家加入讨论！共同完善此项目！群号：【541954936】<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=863f915b9178560bd32ca07cd090a7d9e6f5f90fcff5667489697b1621cecdb3"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="NLP面试学习群" title="NLP面试学习群"></a>
-
-
