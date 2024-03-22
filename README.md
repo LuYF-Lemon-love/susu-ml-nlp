@@ -29,7 +29,7 @@
 | 深度学习 | [10.神经网络(Neural Network)](./Deep%20Learning/10.%20Neural%20Network) | | |
 | 深度学习 | [11. 卷积神经网络(CNN)](./Deep%20Learning/11.%20CNN) | | |
 | 深度学习 | [12. 循环神经网络(RNN)](./Deep%20Learning/12.%20RNN) | | |
-| 深度学习 | [12.1 门控循环单元(GRU)](./Deep%20Learning/12.1%20GRU) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
+| 深度学习 | [12.1 门控循环单元(GRU)](./Deep%20Learning/12.1%20GRU) | | |
 | 深度学习 | [12.2 长短期记忆(LSTM)](./Deep%20Learning/12.2%20LSTM) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | 深度学习 | [13.迁移学习(Transfer)](./Deep%20Learning/13.%20Transfer%20Learning) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
 | 深度学习 | [14.强化学习(Reinforcement) & 多任务](./Deep%20Learning/14.%20Reinforcement%20Learning) | [@mantchs](https://github.com/NLP-LOVE) | 448966528 |
